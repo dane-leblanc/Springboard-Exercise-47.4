@@ -76,7 +76,25 @@ class LinkedList {
 
   /** shift(): return & remove first item. */
 
-  shift() {}
+  shift() {
+    let current = this.head;
+
+    if (!this.head) {
+      throw new Error("List is empty");
+    }
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return current.val;
+    }
+
+    let val = current.val;
+    this.head = current.next;
+    this.length--;
+    return val;
+  }
 
   /** getAt(idx): get val at idx. */
 
@@ -101,7 +119,8 @@ class LinkedList {
 
 let insects = new LinkedList();
 insects.push("ant");
-insects.pop();
+insects.push("ladybug");
+insects.shift();
 
 console.log(insects);
 
