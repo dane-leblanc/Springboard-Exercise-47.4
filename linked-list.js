@@ -35,9 +35,12 @@ class LinkedList {
   unshift(val) {
     let newNode = new Node(val);
 
-    if (!this.head) this.head = newNode;
-    newNode.next = this.head;
-    this.head = newNode;
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
 
     if (this.length === 0) this.tail = this.head;
     this.length++;
@@ -48,12 +51,15 @@ class LinkedList {
   pop() {
     let current = this.head;
 
-    if (!this.head) return;
+    if (!this.head) {
+      throw new Error("List is empty");
+    }
 
     if (this.length === 1) {
       this.head = null;
       this.tail = null;
-      this.length = 0;
+      this.length--;
+      return current.val;
     }
 
     while (current !== null) {
@@ -94,11 +100,8 @@ class LinkedList {
 }
 
 let insects = new LinkedList();
-insects.unshift("ant");
-insects.unshift("bee");
-insects.push("ladybug");
-insects.push("praying mantis");
-// insects.pop();
+insects.push("ant");
+insects.pop();
 
 console.log(insects);
 
