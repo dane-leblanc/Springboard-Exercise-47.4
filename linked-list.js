@@ -165,7 +165,25 @@ class LinkedList {
 
   /** removeAt(idx): return & remove item at idx, */
 
-  removeAt(idx) {}
+  removeAt(idx) {
+    if (this.length <= idx) {
+      throw new Error("Invalid Index");
+    }
+    if (idx === 0) {
+      this.shift();
+      return;
+    }
+    let current = this.head;
+    let count = 0;
+    while (current !== null) {
+      if (count + 1 === idx) {
+        count.next = count.next.next;
+        this.length--;
+      }
+      count = count.next;
+      count++;
+    }
+  }
 
   /** average(): return an average of all values in the list */
 
