@@ -187,14 +187,19 @@ class LinkedList {
 
   /** average(): return an average of all values in the list */
 
-  average() {}
+  average() {
+    let current = this.head;
+    if (!current) return 0;
+    let sum = 0;
+    while (current !== null) {
+      sum += current.val;
+      current = current.next;
+    }
+    return sum / this.length;
+  }
 }
 
 let lst = new LinkedList([5, 10, 15, 20]);
-
-lst.insertAt(3, 17);
-
-console.log(lst.head.val);
-console.log(lst.head.next.val);
+console.log(lst.average());
 
 module.exports = LinkedList;
