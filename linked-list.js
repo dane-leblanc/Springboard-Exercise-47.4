@@ -199,7 +199,4 @@ class LinkedList {
   }
 }
 
-let lst = new LinkedList([5, 10, 15, 20]);
-console.log(lst.average());
-
 module.exports = LinkedList;
