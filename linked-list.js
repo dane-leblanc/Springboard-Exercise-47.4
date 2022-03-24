@@ -158,6 +158,8 @@ class LinkedList {
         this.length++;
         return;
       }
+      current = current.next;
+      count++;
     }
   }
 
@@ -170,10 +172,11 @@ class LinkedList {
   average() {}
 }
 
-let insects = new LinkedList();
+let lst = new LinkedList([5, 10, 15, 20]);
 
-insects.insertAt(0, "mantis");
+lst.insertAt(3, 17);
 
-console.log(insects);
+console.log(lst.head.val);
+console.log(lst.head.next.val);
 
 module.exports = LinkedList;
