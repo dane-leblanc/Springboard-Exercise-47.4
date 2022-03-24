@@ -98,7 +98,22 @@ class LinkedList {
 
   /** getAt(idx): get val at idx. */
 
-  getAt(idx) {}
+  getAt(idx) {
+    if (this.length <= idx || idx < 0) {
+      throw new Error("Invalid index");
+    }
+
+    let current = this.head;
+    let count = 0;
+    while (current !== null) {
+      if (count === idx) {
+        return current.val;
+      } else {
+        current = current.next;
+        count++;
+      }
+    }
+  }
 
   /** setAt(idx, val): set val at idx to val */
 
@@ -120,8 +135,8 @@ class LinkedList {
 let insects = new LinkedList();
 insects.push("ant");
 insects.push("ladybug");
-insects.shift();
+insects.push("bee");
 
-console.log(insects);
+console.log(insects.getAt(2));
 
 module.exports = LinkedList;
