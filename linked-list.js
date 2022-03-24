@@ -117,7 +117,22 @@ class LinkedList {
 
   /** setAt(idx, val): set val at idx to val */
 
-  setAt(idx, val) {}
+  setAt(idx, val) {
+    if (this.length <= idx || idx < 0) {
+      throw new Error("Invalid index");
+    }
+    let current = this.head;
+    let count = 0;
+    while (current !== null) {
+      if (count === idx) {
+        current.val = val;
+        return;
+      } else {
+        current = current.next;
+        count++;
+      }
+    }
+  }
 
   /** insertAt(idx, val): add node w/val before idx. */
 
@@ -137,6 +152,8 @@ insects.push("ant");
 insects.push("ladybug");
 insects.push("bee");
 
-console.log(insects.getAt(2));
+insects.setAt(1, "mantis");
+
+console.log(insects);
 
 module.exports = LinkedList;
